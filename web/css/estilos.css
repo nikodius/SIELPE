@@ -1,0 +1,90 @@
+.modal-header{
+    background-color: #0D5494;
+    color: #fff; 
+}
+
+.modal-header-btn{
+    /*color: #FF6600;*/
+    color: #ff0000;
+    background-color: #fff0000;
+}
+
+.cajaPrincipal{
+    padding: 2% 5% 5% 5%; 
+    min-height: 450px;
+}
+.panelHeader{
+    color: #fff;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: #0074d9; 
+}
+
+#aLogin{
+    color: #fff;
+}
+.btnIngresar{
+    margin-top: 25px;
+    border: none;
+    background: #3a7999;
+    color: #fff;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    position: relative;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+nav li a.active {
+    color: white;
+    background-color: #0D5494;
+}
+
+footer {
+    background-color: #0D5494;
+    color: #fff;
+    width: 100%;
+    bottom: 0;
+    font-size: 0.9em;
+}
+
+/* Large checkboxes */
+.myinput.large{
+    height:22px;
+    width: 22px;
+}
+
+.myinput.large[type="checkbox"]:before{
+    width: 20px;
+    height: 20px;
+}
+.myinput.large[type="checkbox"]:after{
+    top: -20px;
+    width: 16px;
+    height: 16px;
+}
+

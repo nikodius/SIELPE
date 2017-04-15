@@ -1,0 +1,161 @@
+.modal-header{
+    background-color: #0D5494;
+    color: #fff;   
+}
+
+.modal-header-btn{
+    /*color: #FF6600;*/
+    color: #ff0000;
+    background-color: #fff0000;
+}
+/* Propiedades generales */
+*{
+    box-sizing: border-box;
+    
+
+}
+/* Propiedades del pie de pagina */
+/*H E A D E R */
+.navbar{
+    margin-bottom: 0;
+
+}
+.jumbotron {
+ alignment-adjust: middle;
+    /*background-color: #23527c;*/
+    background-color: #2aabd2;
+    /*color: #8A0808;*/
+    color: #fff;
+    padding: 2px  0;
+    margin-bottom: 0;
+    text-align: center;
+    
+}
+#texto p#h1 {
+    color: #fff;
+    font-size: 2em;
+    /*text-shadow:2px 2px 4px #fff; sombra */
+    text-align: center;
+    margin: auto;
+}
+#texto p#h2 {
+    color: #fff;
+    font-size: 1em;
+    /*text-shadow:2px 2px 4px #fff; sombra */
+    text-align: center;
+    margin: auto;
+}
+#texto p#h2:hover {
+    color: black;
+    font-size: 1em;
+    /*text-shadow:2px 2px 4px #fff; sombra */
+    text-align: center;
+    margin: auto;
+    color: #030341;
+    text-decoration: underline;
+}
+
+/* espacio 1 */
+#espacio1{
+    width: 100%;
+    height: 10px;
+    background:-webkit-Radial-gradient(center, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0.5) );
+    margin: auto;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+
+
+}
+
+/*P O S T*/
+.main{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.post{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #999;
+}
+.post .contenedor-botones{
+    width: 100%;
+}
+.pie {	
+    width: 100%;
+    height: 15px;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 0;
+}	
+.pie:hover{
+    color: #030341;
+    text-decoration: underline;
+}
+/* *********************************************************** */
+/*MEDIA QUERIE*/
+@media screen and (max-width: 768px){
+    .post{
+        width: 100%;
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+}
+#foto{
+    /*background-color: #ebcccc;*/
+     color: #000;
+
+}
+#datos{
+    background-color: #cde5ef;
+    color: #000;
+    float: left;
+ 
+}
+
+/* Estilo por defecto */
+ 
+/*input:required:invalid {
+ 
+border: 1px solid red;
+ 
+}
+ 
+input:required:valid {
+ 
+border: 1px solid green;
+ 
+}*/
+
+
+input:invalid {
+ 
+border: 1px solid red;
+ 
+}
+ 
+/* Estilo por defecto */
+ 
+input:valid {
+ 
+border: 1px solid green;
+ 
+}
+.input{
+    width: 86%;
+    height: 34px
+    
+}
+.red{
+    color:#ff0000
+}
+
+.text-uppercase{ 
+    text-transform: uppercase
+}
+.text-capitalize{
+    text-transform: capitalize
+}
+.text-lowercase{
+    text-transform: lowercase
+}
