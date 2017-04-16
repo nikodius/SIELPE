@@ -7,6 +7,7 @@ package com.sielpe.controller;
 
 import com.sielpe.facade.FachadaDAO;
 import com.sielpe.factory.FactoryDTO;
+import com.sielpe.model.Usuario;
 import com.sielpe.utility.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -104,7 +105,6 @@ public class Usuarios extends HttpServlet {
         if (request.getParameter("new") != null) {
             String respuesta = "";
             try {
-                System.out.println("FECHA: " + request.getParameter("fechaUsuario"));
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 Date fecha;
                 fecha = format.parse(request.getParameter("fechaUsuario"));
@@ -113,6 +113,45 @@ public class Usuarios extends HttpServlet {
             } catch (ParseException ex) {
                 respuesta = ex.getMessage();
             }
+        }else{
+            redirectEditarUsuario(request, response);
+        }
+    }
+    
+    /**
+     * peticion redireccionar editar usuario
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws MiExcepcion
+     * @throws ServletException 
+     */
+    public void redirectEditarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        if (request.getParameter("id") != null) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            Usuario us = facadeDAO.detallesUsuario(id);
+            request.setAttribute("usuario", us);
+            request.getRequestDispatcher("editarUsuario.jsp").forward(request, response);
+        } else {
+            actualizarUsuario(request, response);
+        }
+    }
+
+    /**
+     * peticion para actualizar un usuario
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws MiExcepcion 
+     */
+    public void actualizarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String respuesta = "";
+        if (request.getParameter("edit") != null) {
+           /* respuesta = facadeUser.editarUsuario(dtoFactory.crearUsuario(request.getParameter("nombresUsuario"), request.getParameter("apellidosUsuario"), request.getParameter("telefonoUsuario"), request.getParameter("correoUsuario"), Integer.parseInt(request.getParameter("estadoUsuario")), Integer.parseInt(request.getParameter("rolUsuario")), request.getParameter("usuarioLogin")), Integer.parseInt(request.getParameter("id")));
+            facadePR.insertarHistorial(dtoFactory.crearHistorial(request.getParameter("user"), "edito al usuario: " + request.getParameter("usuarioLogin"), String.valueOf(new Date())));
+            response.sendRedirect("GestionUsuarios?&msg=" + respuesta); */
+        } else {
+            response.sendRedirect("GestionUsuarios");
         }
     }
 

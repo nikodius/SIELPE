@@ -3,18 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/controller/Login.java</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/model/Persona.java</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/model/Candidato.java</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/model/Usuario.java</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/model/Rol.java</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/utility/Conexion.java</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/factory/Factory.java</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/model/Eleccion.java</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/persistence/ModeloDAO.java</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/web/index.html</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/model/Voto.java</file>
-            <file>file:/C:/Users/NiKo/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/factory/FactoryDTO.java</file>
+            <file>file:/C:/Users/Nico/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/controller/GestionarCandidatos.java</file>
+            <file>file:/C:/Users/Nico/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/controller/Usuarios.java</file>
+            <file>file:/C:/Users/Nico/Documents/NetBeansProjects/SIELPE/web/nuevoUsuario.jsp</file>
+            <file>file:/C:/Users/Nico/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/persistence/CandidatoDAO.java</file>
+            <file>file:/C:/Users/Nico/Documents/NetBeansProjects/SIELPE/web/editarUsuario.jsp</file>
+            <file>file:/C:/Users/Nico/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/persistence/UsuarioDAO.java</file>
+            <file>file:/C:/Users/Nico/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/facade/FachadaDAO.java</file>
+            <file>file:/C:/Users/Nico/Documents/NetBeansProjects/SIELPE/web/GestionCandidatos.jsp</file>
+            <file>file:/C:/Users/Nico/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/controller/Elecciones.java</file>
+            <file>file:/C:/Users/Nico/Documents/NetBeansProjects/SIELPE/web/usuarios.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -60,6 +60,20 @@ public class FachadaDAO {
      * @return
      * @throws MiExcepcion 
      */
+    public List<Eleccion> listarElecciones()  {
+        List<Object> dto = edao.listarTodo(conexion);
+        List<Eleccion> elecciones = new ArrayList();
+        for (Object mDTO : dto) {
+            elecciones.add((Eleccion) mDTO);
+        }
+        return elecciones;
+    }
+    
+    /**
+     * metodo para listar elecciones del usuario logueado
+     * @return
+     * @throws MiExcepcion 
+     */
     public List<Eleccion> listarElecciones(String id)  {
         List<Object> dto = edao.listarTodo(conexion, id);
         List<Eleccion> elecciones = new ArrayList();
@@ -70,7 +84,21 @@ public class FachadaDAO {
     }
     
     /**
-     * metodo para listar elecciones
+     * metodo para listar candidatos
+     * @return
+     * @throws MiExcepcion 
+     */
+    public List<Candidato> listarCandidatos()  {
+        List<Object> dto = cdao.listarTodo(conexion);
+        List<Candidato> candidatos = new ArrayList();
+        for (Object mDTO : dto) {
+            candidatos.add((Candidato) mDTO);
+        }
+        return candidatos;
+    }
+    
+    /**
+     * metodo para listar candidatos elecciones
      * @return
      * @throws MiExcepcion 
      */
@@ -98,8 +126,19 @@ public class FachadaDAO {
      * @return
      * @throws MiExcepcion 
      */
-    public synchronized String insertarUsuario(Usuario urdto) {
+    public String insertarUsuario(Usuario urdto) {
         return udao.crearRegistro(urdto, conexion);
+    }
+    
+    /**
+     * metodo para detalles usuario
+     * @param urdto
+     * @return
+     * @throws MiExcepcion 
+     */
+    public Usuario detallesUsuario(int id) {
+        Usuario usuario = (Usuario)udao.listarUno(conexion, id);
+        return usuario;
     }
     
 

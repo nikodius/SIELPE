@@ -16,6 +16,14 @@
         <servlet-name>Usuarios</servlet-name>
         <servlet-class>com.sielpe.controller.Usuarios</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GestionarElecciones</servlet-name>
+        <servlet-class>com.sielpe.controller.GestionarElecciones</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GestionarCandidatos</servlet-name>
+        <servlet-class>com.sielpe.controller.GestionarCandidatos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>Usuarios</servlet-name>
         <url-pattern>/Usuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionarElecciones</servlet-name>
+        <url-pattern>/GestionarElecciones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionarCandidatos</servlet-name>
+        <url-pattern>/GestionarCandidatos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

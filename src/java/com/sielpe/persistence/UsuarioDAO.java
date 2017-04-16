@@ -53,7 +53,32 @@ public class UsuarioDAO implements ModeloDAO {
     
     @Override
     public Object listarUno(Connection conexion, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Usuario userDTO = new Usuario();
+        try {
+            String query = "SELECT nro_documento_user, nombre_user, fecha_nacimiento_user, id_rol, nombre_rol, genero, "
+                    + "email, id_estado, nombre_estado "
+                    + "FROM usuario "
+                    + "INNER JOIN rol ON(usuario.id_rol=rol.idrol)"
+                    + "INNER JOIN estado_usuarios ON(usuario.id_estado=estado_usuarios.Id) "
+                    + "WHERE nro_documento_user=?";
+            statement = conexion.prepareStatement(query);
+            statement.setInt(1, id);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                userDTO.setId(rs.getString(1));
+                userDTO.setUserName(rs.getString(2));
+                userDTO.setFechaNacimiento(rs.getDate(3));
+                userDTO.setIdRol(rs.getInt(4));
+                userDTO.setNombreRol(rs.getString(5));
+                userDTO.setGenero(rs.getString(6));
+                userDTO.setEmail(rs.getString(7));
+                userDTO.setIdEstado(rs.getInt(8));
+            }
+        } catch (SQLException sqlexception) {
+            sqlexception.printStackTrace();
+        }
+        //devolvemos el arreglo
+        return userDTO;
     }
 
     @Override

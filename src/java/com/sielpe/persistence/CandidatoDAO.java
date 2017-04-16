@@ -23,7 +23,31 @@ public class CandidatoDAO implements ModeloDAO {
 
     @Override
     public ArrayList<Object> listarTodo(Connection conexion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Object> listaCandidatos = new ArrayList();
+        try {
+            String query = "SELECT idcandidato, id_eleccion, nombre, genero, fecha_nacimiento, "
+                    + "numero_lista, nombre_eleccion "
+                    + "FROM candidato "
+                    + "INNER JOIN eleccion ON(candidato.id_eleccion=eleccion.ideleccion)";
+            statement = conexion.prepareStatement(query);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                Candidato candidato = new Candidato();
+                candidato.setId(rs.getString(1));
+                candidato.setIdEleccion(rs.getInt(2));
+                candidato.setNombre(rs.getString(3));
+                candidato.setGenero(rs.getString(4));
+                candidato.setFechaNacimiento(rs.getDate(5));
+                candidato.setNumeroLista(rs.getInt(6));
+                candidato.setNombreEleccion(rs.getString(7));
+                //candidato.setImagen(rs.getImage(8));
+                listaCandidatos.add(candidato);
+            }
+        } catch (SQLException sqlexception) {
+            sqlexception.printStackTrace();
+        }
+        //devolvemos el arreglo
+        return listaCandidatos;
     }
 
     public ArrayList<Object> listarTodo(Connection conexion, int id) {

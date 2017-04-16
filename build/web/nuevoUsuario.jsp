@@ -54,8 +54,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul>
                 <li><a class="active" href="Usuarios">Usuarios</a></li>
-                <li><a href="#">Elecciones</a></li>
-                <li><a href="#">Candidatos</a></li>
+                <li><a href="GestionarElecciones">Elecciones</a></li>
+                <li><a href="GestionarCandidatos">Candidatos</a></li>
                 <li><a href="#">Reportes</a></li>
             </ul>
         </div>

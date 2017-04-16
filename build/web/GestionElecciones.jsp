@@ -53,8 +53,8 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul>
-                <li><a class="active" href="Usuarios">Usuarios</a></li>
-                <li><a href="GestionarElecciones">Elecciones</a></li>
+                <li><a href="Usuarios">Usuarios</a></li>
+                <li><a class="active" href="GestionarElecciones">Elecciones</a></li>
                 <li><a href="GestionarCandidatos">Candidatos</a></li>
                 <li><a href="#">Reportes</a></li>
             </ul>
@@ -63,47 +63,46 @@
     <!-- miga de pan -->
     <div class="row">
         <ol class="breadcrumb pull-left">
-            <li class="active"><a href="#">Usuarios</a></li>
+            <li class="active"><a href="#">Elecciones</a></li>
         </ol>
     </div>
     <!-- contenido principal-->
     <div class="row">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Usuarios</h3>
+                <h3 class="panel-title">Elecciones Vigentes</h3>
             </div>
             <div class="panel-body">
-                <%if (request.getAttribute("listUsuarios") != null) {
-                        List<Usuario> lista = (ArrayList) request.getAttribute("listUsuarios");
+                <%if (request.getAttribute("listElecciones") != null) {
+                        List<Eleccion> lista = (ArrayList) request.getAttribute("listElecciones");
                 %>
-                <div align="right"><a href="Usuarios?add"><img src="images/add.png" id="imgEX" alt="Agrega Registro"/> Nuevo Usuario</a></div>
                 <br/>
                 <table class = "table table-striped table-bordered table-hover table-condensed" id="tablerPR" >
                     <thead>
                         <tr>
-                            <th>Id Usuario</th>
-                            <th>Nombre Usuario</th>
-                            <th>Fecha Nacimiento</th>
-                            <th>Rol</th>
-                            <th>Genero</th>
-                            <th>Email</th>
-                            <th>Estado</th>
-                            <th> </th>
+                            <th>Nombre Eleccion</th>
+                            <th>Descripcion</th>
+                            <th>Inicio Inscripcion Candidatos</th>
+                            <th>Fin Inscripcion Candidatos</th>
+                            <th>Fecha Votacion</th>
+                            <th>Hora Inicio Votacion</th>
+                            <th>Hora Fin Votacion</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody> 
                         <%
-                            for (Usuario pdto : lista) {
+                            for (Eleccion pdto : lista) {
                         %>
                         <tr>
-                            <td><%=pdto.getId()%></td>
-                            <td><%=pdto.getUserName()%></td>
-                            <td><%=pdto.getFechaNacimiento()%></td>
-                            <td><%=pdto.getNombreRol()%></td>
-                            <td><%=pdto.getGenero()%></td>
-                            <td><%=pdto.getEmail()%></td>
-                            <td><%=pdto.getEstado()%></td>
-                            <td><a href="Usuarios?id=<% out.print(pdto.getId());%>"><img src="images/edit.png" id="imgEX" alt="Modificar Registro"/></a></td>
+                            <td><%=pdto.getNombre()%></td>
+                            <td><%=pdto.getDescripcion()%></td>
+                            <td><%=pdto.getFechaInicioInscripcion()%></td>
+                            <td><%=pdto.getFechaFinInscripcion()%></td>
+                            <td><%=pdto.getFechaVotacion()%></td>
+                            <td><%=pdto.getHoraInicioVotacion()%></td>
+                            <td><%=pdto.getHoraFinVotacion()%></td>
+                            <td><a href="GestionarElecciones?id=<% out.print(pdto.getId());%>"><img src="images/edit.png" id="imgEX" alt="Modificar Registro"/></a></td>
                         </tr>
                         <% }%>
                     </tbody>
@@ -112,6 +111,6 @@
             </div>
         </div>
     </div>
-</div>
+   </div>
 
-<jsp:include page="_footer.jsp" />
+    <jsp:include page="_footer.jsp" />

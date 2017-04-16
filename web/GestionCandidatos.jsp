@@ -4,11 +4,13 @@
     Author     : NicolasRG
 --%>
 
+<%@page import="com.sielpe.model.Candidato"%>
 <%@page import="com.sielpe.model.Eleccion"%>
 <%@page import="com.sielpe.model.Usuario"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <jsp:include page="_header.jsp" />
 <% response.setHeader("Cache-Control", "no-cache");
     response.setHeader("Cache-Control", "no-store");
@@ -53,9 +55,9 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul>
-                <li><a class="active" href="Usuarios">Usuarios</a></li>
+                <li><a href="Usuarios">Usuarios</a></li>
                 <li><a href="GestionarElecciones">Elecciones</a></li>
-                <li><a href="GestionarCandidatos">Candidatos</a></li>
+                <li><a class="active" href="GestionarCandidatos">Candidatos</a></li>
                 <li><a href="#">Reportes</a></li>
             </ul>
         </div>
@@ -63,55 +65,51 @@
     <!-- miga de pan -->
     <div class="row">
         <ol class="breadcrumb pull-left">
-            <li class="active"><a href="#">Usuarios</a></li>
+            <li class="active"><a href="#">Candidatos</a></li>
         </ol>
     </div>
     <!-- contenido principal-->
     <div class="row">
+        <%if (request.getAttribute("listCandidatos") != null) {
+                List<Candidato> lista = (ArrayList) request.getAttribute("listCandidatos");
+        %>
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Usuarios</h3>
+                <h3 class="panel-title"><%=lista.isEmpty() ? "No hay candidatos" : "Candidatos " + lista.get(0).getNombreEleccion()%></h3>
             </div>
             <div class="panel-body">
-                <%if (request.getAttribute("listUsuarios") != null) {
-                        List<Usuario> lista = (ArrayList) request.getAttribute("listUsuarios");
-                %>
-                <div align="right"><a href="Usuarios?add"><img src="images/add.png" id="imgEX" alt="Agrega Registro"/> Nuevo Usuario</a></div>
                 <br/>
                 <table class = "table table-striped table-bordered table-hover table-condensed" id="tablerPR" >
                     <thead>
                         <tr>
-                            <th>Id Usuario</th>
-                            <th>Nombre Usuario</th>
-                            <th>Fecha Nacimiento</th>
-                            <th>Rol</th>
+                            <th>Documento Candidato</th>
+                            <th>Nombre</th>
                             <th>Genero</th>
-                            <th>Email</th>
-                            <th>Estado</th>
-                            <th> </th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Numero Lista</th>
+                            <th>Imagen</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody> 
                         <%
-                            for (Usuario pdto : lista) {
+                            for (Candidato pdto : lista) {
                         %>
                         <tr>
                             <td><%=pdto.getId()%></td>
-                            <td><%=pdto.getUserName()%></td>
-                            <td><%=pdto.getFechaNacimiento()%></td>
-                            <td><%=pdto.getNombreRol()%></td>
+                            <td><%=pdto.getNombre()%></td>
                             <td><%=pdto.getGenero()%></td>
-                            <td><%=pdto.getEmail()%></td>
-                            <td><%=pdto.getEstado()%></td>
-                            <td><a href="Usuarios?id=<% out.print(pdto.getId());%>"><img src="images/edit.png" id="imgEX" alt="Modificar Registro"/></a></td>
+                            <td><%=pdto.getFechaNacimiento()%></td>
+                            <td><%=pdto.getNumeroLista()%></td>
+                            <td><%=pdto.getFoto()%></td>
+                            <td></td>
                         </tr>
                         <% }%>
                     </tbody>
                 </table>
-                <%}%>
             </div>
         </div>
     </div>
-</div>
-
-<jsp:include page="_footer.jsp" />
+    <% }%>
+    <br/><br/>
+    <jsp:include page="_footer.jsp" />

@@ -54,8 +54,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul>
                 <li><a class="active" href="Usuarios">Usuarios</a></li>
-                <li><a href="#">Elecciones</a></li>
-                <li><a href="#">Candidatos</a></li>
+                <li><a href="GestionarElecciones">Elecciones</a></li>
+                <li><a href="GestionarCandidatos">Candidatos</a></li>
                 <li><a href="#">Reportes</a></li>
             </ul>
         </div>
@@ -103,7 +103,7 @@
                             <td><%=pdto.getGenero()%></td>
                             <td><%=pdto.getEmail()%></td>
                             <td><%=pdto.getEstado()%></td>
-                            <td><a href="Usuarios?id=<% out.print(pdto.getId());%>"><i class="fa fa-search" aria-hidden="true"></i></a></td>
+                            <td><a href="Usuarios?id=<% out.print(pdto.getId());%>"><img src="images/edit.png" id="imgEX" alt="Modificar Registro"/></a></td>
                         </tr>
                         <% }%>
                     </tbody>
