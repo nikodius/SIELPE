@@ -106,8 +106,7 @@ public class Usuarios extends HttpServlet {
             String respuesta = "";
             try {
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                Date fecha;
-                fecha = format.parse(request.getParameter("fechaUsuario"));
+                Date fecha = format.parse(request.getParameter("fechaUsuario"));
                 respuesta = facadeDAO.insertarUsuario(dtoFactory.crearUsuario(request.getParameter("idUsuario"), request.getParameter("generoUsuario"), fecha, request.getParameter("nombreUsuario"), Integer.parseInt(request.getParameter("rolUsuario")), request.getParameter("passUsuario"), request.getParameter("correoUsuario"), Integer.parseInt(request.getParameter("estadoUsuario"))));
                 response.sendRedirect("Usuarios?msg=" + respuesta);
             } catch (ParseException ex) {
@@ -147,11 +146,16 @@ public class Usuarios extends HttpServlet {
     public void actualizarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String respuesta = "";
         if (request.getParameter("edit") != null) {
-           /* respuesta = facadeUser.editarUsuario(dtoFactory.crearUsuario(request.getParameter("nombresUsuario"), request.getParameter("apellidosUsuario"), request.getParameter("telefonoUsuario"), request.getParameter("correoUsuario"), Integer.parseInt(request.getParameter("estadoUsuario")), Integer.parseInt(request.getParameter("rolUsuario")), request.getParameter("usuarioLogin")), Integer.parseInt(request.getParameter("id")));
-            facadePR.insertarHistorial(dtoFactory.crearHistorial(request.getParameter("user"), "edito al usuario: " + request.getParameter("usuarioLogin"), String.valueOf(new Date())));
-            response.sendRedirect("GestionUsuarios?&msg=" + respuesta); */
+            try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date fecha = format.parse(request.getParameter("fechaUsuario"));
+            respuesta = facadeDAO.editarUsuario(dtoFactory.crearUsuario(request.getParameter("idUsuario"), request.getParameter("generoUsuario"), fecha, request.getParameter("nombreUsuario"), Integer.parseInt(request.getParameter("rolUsuario")), "", request.getParameter("correoUsuario"), Integer.parseInt(request.getParameter("estadoUsuario"))));
+            response.sendRedirect("Usuarios?&msg=" + respuesta); 
+            } catch (ParseException ex) {
+                respuesta = ex.getMessage();
+            }
         } else {
-            response.sendRedirect("GestionUsuarios");
+            response.sendRedirect("usuarios");
         }
     }
 

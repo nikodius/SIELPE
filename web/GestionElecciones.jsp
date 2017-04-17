@@ -76,6 +76,7 @@
                 <%if (request.getAttribute("listElecciones") != null) {
                         List<Eleccion> lista = (ArrayList) request.getAttribute("listElecciones");
                 %>
+                <div align="right"><a href="GestionarElecciones?add"><img src="images/add.png" id="imgEX" alt="Agrega Registro"/> Nueva Eleccion</a></div>
                 <br/>
                 <table class = "table table-striped table-bordered table-hover table-condensed" id="tablerPR" >
                     <thead>

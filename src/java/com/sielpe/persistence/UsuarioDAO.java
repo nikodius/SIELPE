@@ -22,7 +22,7 @@ public class UsuarioDAO implements ModeloDAO {
 
     @Override
     public ArrayList<Object> listarTodo(Connection conexion) {
-         ArrayList<Object> listaUsuarios = new ArrayList();
+        ArrayList<Object> listaUsuarios = new ArrayList();
         try {
             String query = "SELECT nro_documento_user, nombre_user, fecha_nacimiento_user, id_rol, nombre_rol, genero, "
                     + "email, id_estado, nombre_estado "
@@ -50,7 +50,7 @@ public class UsuarioDAO implements ModeloDAO {
         //devolvemos el arreglo
         return listaUsuarios;
     }
-    
+
     @Override
     public Object listarUno(Connection conexion, int id) {
         Usuario userDTO = new Usuario();
@@ -82,8 +82,39 @@ public class UsuarioDAO implements ModeloDAO {
     }
 
     @Override
-    public String editarRegistro(Connection conexion, Object dto, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String editarRegistro(Connection conexion, Object dto) {
+        Usuario user = (Usuario) dto;
+        java.sql.Date sqlDate = new java.sql.Date(user.getFechaNacimiento().getTime());
+        int resultado = 0;
+        String respuesta = "";
+        String sql = "UPDATE usuario SET nombre_user=?, fecha_nacimiento_user=?, genero=?, id_estado=?, "
+                    + "id_rol=?, email=? "
+                + "WHERE nro_documento_user=?;";
+        try {
+            statement = conexion.prepareStatement(sql);
+            statement.setString(1, user.getUserName());
+            statement.setDate(2, sqlDate);
+            statement.setString(3, user.getGenero());
+            statement.setInt(4, user.getIdEstado());
+            statement.setInt(5, user.getIdRol());
+            statement.setString(6, user.getEmail());
+            statement.setString(7, user.getId());
+
+            resultado = statement.executeUpdate();
+            
+            //comprobar si se ejecuto la instruccion en sql
+            if (resultado != 0) {
+                respuesta = "Modificado Correctamente";
+
+            } else {
+                respuesta = "NO se ha modificado";
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Error de MySQL: " + ex.getMessage());
+            respuesta = "error, no se modifico";
+        }
+        return respuesta;
     }
 
     @Override
@@ -93,7 +124,7 @@ public class UsuarioDAO implements ModeloDAO {
         String rta = "";
         try {
             statement = conexion.prepareStatement("INSERT INTO usuario(nro_documento_user, nombre_user, fecha_nacimiento_user, genero, id_estado, "
-                    + "id_rol, email, password_user) VALUES (?,?,?,?,?,?,?,?)");
+                    + "id_rol, email, password_user) VALUES (?,?,?,?,?,?,?,md5(?))");
             statement.setString(1, IngUsu.getId());
             statement.setString(2, IngUsu.getUserName());
             statement.setDate(3, sqlDate);
@@ -120,13 +151,13 @@ public class UsuarioDAO implements ModeloDAO {
     public String cambiarEstado(String id, Connection conexion, int estado) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public Usuario loginValidate(Connection conexion, String document, String pass){
-            Usuario userDTO = null;
+
+    public Usuario loginValidate(Connection conexion, String document, String pass) {
+        Usuario userDTO = null;
         try {
             String query = "SELECT nro_documento_user, nombre_user, fecha_nacimiento_user, id_rol, password_user, genero"
                     + " FROM usuario "
-                    + "WHERE nro_documento_user=? AND password_user=?";
+                    + "WHERE nro_documento_user=? AND password_user=md5(?)";
             statement = conexion.prepareStatement(query);
             statement.setString(1, document);
             statement.setString(2, pass);

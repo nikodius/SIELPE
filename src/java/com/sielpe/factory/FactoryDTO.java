@@ -1,6 +1,7 @@
 package com.sielpe.factory;
 
 import com.sielpe.model.*;
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -21,9 +22,15 @@ public class FactoryDTO implements Factory {
     }
 
     @Override
-    public Eleccion crearEleccion() {
-        return new Eleccion();
+    public Eleccion crearEleccion(String nombre, String descripcion, Date fechaInicioInscripcion, Date fechaFinInscripcion, Date fechaVotacion, Time horaInicioVotacion, Time horaFinVotacion) {
+        return new Eleccion(nombre, descripcion, fechaInicioInscripcion, fechaFinInscripcion, fechaVotacion, horaInicioVotacion, horaFinVotacion);
     }
+    
+    @Override
+    public Eleccion detallesEleccion(int id, String nombre, String descripcion, Date fechaInicioInscripcion, Date fechaFinInscripcion, Date fechaVotacion, Time horaInicioVotacion, Time horaFinVotacion) {
+        return new Eleccion(id, nombre, descripcion, fechaInicioInscripcion, fechaFinInscripcion, fechaVotacion, horaInicioVotacion, horaFinVotacion);
+    }
+    
 
     @Override
     public Rol crearRol(String user, String pass) {

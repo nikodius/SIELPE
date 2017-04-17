@@ -24,6 +24,32 @@ public class Eleccion {
     private Time horaFinVotacion;
     private List<Candidato> listaCandidatos;
 
+    public Eleccion() {
+    }
+
+    public Eleccion(String nombre, String descripcion, Date fechaInicioInscripcion, Date fechaFinInscripcion, Date fechaVotacion, Time horaInicioVotacion, Time horaFinVotacion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaInicioInscripcion = fechaInicioInscripcion;
+        this.fechaFinInscripcion = fechaFinInscripcion;
+        this.fechaVotacion = fechaVotacion;
+        this.horaInicioVotacion = horaInicioVotacion;
+        this.horaFinVotacion = horaFinVotacion;
+    }
+    
+    public Eleccion(int id, String nombre, String descripcion, Date fechaInicioInscripcion, Date fechaFinInscripcion, Date fechaVotacion, Time horaInicioVotacion, Time horaFinVotacion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaInicioInscripcion = fechaInicioInscripcion;
+        this.fechaFinInscripcion = fechaFinInscripcion;
+        this.fechaVotacion = fechaVotacion;
+        this.horaInicioVotacion = horaInicioVotacion;
+        this.horaFinVotacion = horaFinVotacion;
+    }
+
+    
+    
     public int getId() {
         return id;
     }

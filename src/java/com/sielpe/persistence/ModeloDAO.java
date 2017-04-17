@@ -19,7 +19,7 @@ public interface ModeloDAO {
 
     public String crearRegistro(Object dto, Connection conexion);
     
-    public String editarRegistro(Connection conexion, Object dto, int id);
+    public String editarRegistro(Connection conexion, Object dto);
     
     public String cambiarEstado(String id, Connection conexion, int estado);
 

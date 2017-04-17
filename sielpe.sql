@@ -1,7 +1,6 @@
-﻿# Host: localhost  (Version 5.7.16-log)
-# Date: 2017-04-14 20:33:29
-# Generator: MySQL-Front 5.4  (Build 2.11)
-# Internet: http://www.mysqlfront.de/
+﻿# Host: localhost  (Version 5.6.25-log)
+# Date: 2017-04-17 12:36:39
+# Generator: MySQL-Front 6.0  (Build 1.48)
 
 /*!40101 SET NAMES utf8 */;
 
@@ -25,7 +24,7 @@ CREATE TABLE `candidato` (
 # Data for table "candidato"
 #
 
-REPLACE INTO `candidato` VALUES ('1',0,'En Blanco',NULL,NULL,NULL,NULL),('123123',1,'Pedro Garcia','Masculino','1990-02-02',10,NULL),('2313',1,'Juan Jimenez','Masculino','1999-09-01',5,X'');
+INSERT INTO `candidato` VALUES ('1',0,'En Blanco',NULL,NULL,NULL,NULL),('123123',1,'Pedro Garcia','Masculino','1990-02-02',10,NULL),('2313',1,'Juan Jimenez','Masculino','1999-09-01',5,X'');
 
 #
 # Structure for table "eleccion"
@@ -47,7 +46,7 @@ CREATE TABLE `eleccion` (
 # Data for table "eleccion"
 #
 
-REPLACE INTO `eleccion` VALUES (1,'eleccion asamblea','2017-04-14','2017-04-16','08:00:00','20:00:00','Votacion para la asamblea general','2017-04-14'),(2,'Eleccion padrinos','2017-04-13','2017-04-20','08:00:00','20:00:00','Eleccion de padrinos de area','2017-04-15');
+INSERT INTO `eleccion` VALUES (1,'eleccion asamblea','2017-04-14','2017-04-16','08:00:00','20:00:00','Votacion para la asamblea general','2017-04-14'),(2,'Eleccion padrinos','2017-04-13','2017-04-20','08:00:00','20:00:00','Eleccion de padrinos de area','2017-04-15'),(3,'Presidencial','2017-04-16','2017-04-18','08:00:00','18:00:00','Eleccion presidencial','2017-04-17');
 
 #
 # Structure for table "estado_usuarios"
@@ -64,7 +63,7 @@ CREATE TABLE `estado_usuarios` (
 # Data for table "estado_usuarios"
 #
 
-REPLACE INTO `estado_usuarios` VALUES (1,'Activo',NULL),(2,'Inactivo',NULL);
+INSERT INTO `estado_usuarios` VALUES (1,'Activo',NULL),(2,'Inactivo',NULL);
 
 #
 # Structure for table "estado_votacion"
@@ -80,7 +79,7 @@ CREATE TABLE `estado_votacion` (
 # Data for table "estado_votacion"
 #
 
-REPLACE INTO `estado_votacion` VALUES (1,'Almacenado'),(2,'Cancelado');
+INSERT INTO `estado_votacion` VALUES (1,'Almacenado'),(2,'Cancelado');
 
 #
 # Structure for table "rol"
@@ -97,7 +96,7 @@ CREATE TABLE `rol` (
 # Data for table "rol"
 #
 
-REPLACE INTO `rol` VALUES (1,'Administrador','Usuario encargado de administrar el sistema de votaciones'),(2,'Usuario','Usuario basico que puede votar en las elecciones');
+INSERT INTO `rol` VALUES (1,'Administrador','Usuario encargado de administrar el sistema de votaciones'),(2,'Usuario','Usuario basico que puede votar en las elecciones');
 
 #
 # Structure for table "usuario"
@@ -115,13 +114,13 @@ CREATE TABLE `usuario` (
   `id_estado` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`iduser`),
   KEY `id_rol_idx` (`id_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "usuario"
 #
 
-REPLACE INTO `usuario` VALUES (1,'1010','nicolasrg','1990-12-02',2,'1','Masculino','admin@mail.com','1'),(2,'777','admin','1990-02-09',1,'1','Masculino','nico@mail.com','1');
+INSERT INTO `usuario` VALUES (1,'1010','nicolasrg','1990-12-02',2,'202cb962ac59075b964b07152d234b70','Masculino','niko@mail.com','1'),(2,'777','admin','1990-02-09',1,'202cb962ac59075b964b07152d234b70','Masculino','admin@mail.com','1');
 
 #
 # Structure for table "votacion"

@@ -33,7 +33,7 @@ public class VotacionDAO implements ModeloDAO {
     }
 
     @Override
-    public String editarRegistro(Connection conexion, Object dto, int id) {
+    public String editarRegistro(Connection conexion, Object dto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -20,7 +20,7 @@ public class Conexion {
     private static void conectar(){
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/sielpe", "root", "admin123");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/sielpe", "auto", "admin123");
         } catch (SQLException sqlException) {
            sqlException.printStackTrace();
         } catch (Exception exception) {

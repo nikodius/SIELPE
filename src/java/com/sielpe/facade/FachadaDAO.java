@@ -56,6 +56,38 @@ public class FachadaDAO {
     }
     
     /**
+     * metodo para insertar usuario
+     * @param urdto
+     * @return
+     * @throws MiExcepcion 
+     */
+    public String insertarUsuario(Usuario urdto) {
+        return udao.crearRegistro(urdto, conexion);
+    }
+    
+    /**
+     * metodo para detalles usuario
+     * @param urdto
+     * @return
+     * @throws MiExcepcion 
+     */
+    public Usuario detallesUsuario(int id) {
+        Usuario usuario = (Usuario)udao.listarUno(conexion, id);
+        return usuario;
+    }
+    
+    /**
+     * metodo editar usuario
+     * @param pr
+     * @param id
+     * @return
+     * @throws MiExcepcion 
+     */
+    public String editarUsuario(Usuario user){
+        return udao.editarRegistro(conexion, user);
+    }
+    
+    /**
      * metodo para listar elecciones
      * @return
      * @throws MiExcepcion 
@@ -82,6 +114,37 @@ public class FachadaDAO {
         }
         return elecciones;
     }
+    
+    /**
+     * metodo para detalles eleccion
+     * @param urdto
+     * @return
+     * @throws MiExcepcion 
+     */
+    public Eleccion detallesEleccion(int id) {
+        Eleccion eleccion = (Eleccion)edao.listarUno(conexion, id);
+        return eleccion;
+    }
+    
+    /**
+     * metodo para crear eleccion
+     * @param urdto
+     * @return
+     * @throws MiExcepcion 
+     */
+    public String crearEleccion(Eleccion eleccion) {
+        return edao.crearRegistro(eleccion, conexion);
+    }
+    
+    /**
+     * metodo editar eleccion
+     * @return
+     * @throws MiExcepcion 
+     */
+    public String editarEleccion(Eleccion elec){
+        return edao.editarRegistro(conexion, elec);
+    }
+    
     
     /**
      * metodo para listar candidatos
@@ -120,26 +183,6 @@ public class FachadaDAO {
         return vdao.crearRegistro(vdto, conexion);
     }
     
-    /**
-     * metodo para insertar usuario
-     * @param urdto
-     * @return
-     * @throws MiExcepcion 
-     */
-    public String insertarUsuario(Usuario urdto) {
-        return udao.crearRegistro(urdto, conexion);
-    }
-    
-    /**
-     * metodo para detalles usuario
-     * @param urdto
-     * @return
-     * @throws MiExcepcion 
-     */
-    public Usuario detallesUsuario(int id) {
-        Usuario usuario = (Usuario)udao.listarUno(conexion, id);
-        return usuario;
-    }
     
 
 }

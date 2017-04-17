@@ -12,8 +12,6 @@ import com.sielpe.model.Eleccion;
 import com.sielpe.model.Usuario;
 import com.sielpe.utility.Conexion;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
