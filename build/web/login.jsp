@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Document   : index
-    Created on : 14/04/2017, 09:07:59 AM
-    Author     : Jairo Medina
--->
 <html>
     <head>
         <title>SIELPE</title>

@@ -157,7 +157,6 @@ public class GestionarElecciones extends HttpServlet {
         String respuesta = "";
         if (request.getParameter("edit") != null) {
             try {
-                System.out.println("HORA INICIAL: " + request.getParameter("horaInicio"));
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 Date fechaInicio = format.parse(request.getParameter("fechaInicioInscripcion"));
                 Date fechaFin = format.parse(request.getParameter("fechaFinInscripcion"));

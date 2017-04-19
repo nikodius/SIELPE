@@ -52,6 +52,27 @@ public class EleccionDAO implements ModeloDAO {
         //devolvemos el arreglo
         return listaElecciones;
     }
+    
+    public ArrayList<Object> listarVigentes(Connection conexion) {
+        ArrayList<Object> listaElecciones = new ArrayList();
+        try {
+            String query = "SELECT ideleccion, nombre_eleccion "
+                    + "FROM eleccion "
+                    + "WHERE NOW() BETWEEN fecha_inicio_inscripcion AND fecha_fin_inscripcion";
+            statement = conexion.prepareStatement(query);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                Eleccion el = new Eleccion();
+                el.setId(rs.getInt(1));
+                el.setNombre(rs.getString(2));
+                listaElecciones.add(el);
+            }
+        } catch (SQLException sqlexception) {
+            sqlexception.printStackTrace();
+        }
+        //devolvemos el arreglo
+        return listaElecciones;
+    }
 
     @Override
     public Object listarUno(Connection conexion, int id) {

@@ -75,9 +75,10 @@
         %>
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"><%=lista.isEmpty() ? "No hay candidatos" : "Candidatos " + lista.get(0).getNombreEleccion()%></h3>
+                <h3 class="panel-title">Candidatos</h3>
             </div>
             <div class="panel-body">
+                <div align="right"><a href="GestionarCandidatos?add"><img src="images/add.png" id="imgEX" alt="Agrega Registro"/> Registrar Candidato</a></div>
                 <br/>
                 <table class = "table table-striped table-bordered table-hover table-condensed" id="tablerPR" >
                     <thead>
@@ -87,7 +88,9 @@
                             <th>Genero</th>
                             <th>Fecha Nacimiento</th>
                             <th>Numero Lista</th>
+                            <th>Eleccion</th>
                             <th>Imagen</th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -101,8 +104,10 @@
                             <td><%=pdto.getGenero()%></td>
                             <td><%=pdto.getFechaNacimiento()%></td>
                             <td><%=pdto.getNumeroLista()%></td>
+                            <td><%=pdto.getNombreEleccion()%></td>
                             <td><%=pdto.getFoto()%></td>
-                            <td></td>
+                            <td><a href="GestionarCandidatos?id=<% out.print(pdto.getId());%>"><img src="images/edit.png" id="imgEX" alt="Modificar Registro"/></a></td>
+                            <td><a data-toggle="modal" href="#myModal"><img src="images/portrait.png" id="imgEX" alt="Modificar imagen"/ ></a></td>
                         </tr>
                         <% }%>
                     </tbody>
@@ -110,6 +115,40 @@
             </div>
         </div>
     </div>
+    <!-- Modal Cargar Foto-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title">Cargar Foto</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="frm" action="saveImage.jsp" enctype="multipart/form-data" method="post">
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="fotoCandidato" class="col-lg-1 control-label">Foto</label>
+                                <div class="col-lg-10">
+                                    <input type="file" class="form-control" id="fotoCandidato" name="fotoCandidato"  tabindex="1" accept="image/*" required>
+                                </div>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <button class="btn btn-success" type="submit" name="enviar" value="Guardar" tabindex="2">Enviar Foto</button>
+                        </div>
+                    </form> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
     <% }%>
     <br/><br/>
     <jsp:include page="_footer.jsp" />

@@ -4,6 +4,7 @@
     Author     : NicolasRG
 --%>
 
+<%@page import="com.sielpe.model.Candidato"%>
 <%@page import="com.sielpe.model.Eleccion"%>
 <%@page import="com.sielpe.model.Usuario"%>
 <%@page import="java.util.List"%>
@@ -36,11 +37,13 @@
         $("#mensaje").fadeOut(7000);
     });
 </script>
+<%if (request.getAttribute("candidato") != null) {
+        Candidato usMod = (Candidato) request.getAttribute("candidato");
+%>
 <div class="row cajaPrincipal">
     <% if (request.getParameter("msg") != null) { %>
     <div id="mensaje" align="center" class="alert alert-info"><%out.print(request.getParameter("msg"));%></div>
     <% }%>
-
     <!-- menu -->
     <nav class="navbar navbar-default">
         <div class="navbar-header">
@@ -53,9 +56,9 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul>
-                <li><a class="active" href="Usuarios">Usuarios</a></li>
+                <li><a href="Usuarios">Usuarios</a></li>
                 <li><a href="GestionarElecciones">Elecciones</a></li>
-                <li><a href="GestionarCandidatos">Candidatos</a></li>
+                <li><a class="active" href="GestionarCandidatos">Candidatos</a></li>
                 <li><a href="#">Reportes</a></li>
             </ul>
         </div>
@@ -63,77 +66,69 @@
     <!-- miga de pan -->
     <div class="row">
         <ol class="breadcrumb pull-left">
-            <li><a href="Usuarios">Usuarios</a></li>
-            <li class="active"><a href="#">Nuevo Usuario</a></li>
+            <li><a href="GestionarCandidatos">Candidatos</a></li>
+            <li class="active"><a href="#">Editar Candidato</a></li>
         </ol>
     </div>
     <!-- contenido principal-->
     <div class="row">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Nuevo Usuario</h3>
+                <h3 class="panel-title">Editar Candidato</h3>
             </div>
             <div class="panel-body">
-                <form  method="post" action="Usuarios?new">
+                <form  method="post" action="GestionarCandidatos?edit">
                     <div class="row">
                         <div class="form-group">
-                            <label for="idUsuario" class="col-lg-1 control-label" >Documento Identidad</label>
+                            <label for="idCandidato" class="col-lg-1 control-label" >Numero Identificación</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" id="idUsuario" name="idUsuario" placeholder="Documento Identidad" tabindex="1" required>
+                                <input type="hidden" class="form-control" id="idCandidato" name="idCandidato"  value="<%=usMod.getId()%>">
+                                <input type="text" class="form-control" id="idCandidato" name="idCandidato" placeholder="Numero Identificación" tabindex="1" disabled value="<%=usMod.getId()%>">
                             </div>
-                            <label for="nombreUsuario" class="col-lg-1 control-label">Nombre Usuario</label>
+                            <label for="nombreCandidato" class="col-lg-1 control-label">Nombre Completo</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre Usuario" tabindex="2" required>
+                                <input type="text" class="form-control" id="nombreCandidato" name="nombreCandidato" placeholder="Nombre Completo" tabindex="2" required value="<%=usMod.getNombre()%>">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <label for="fechaUsuario" class="col-lg-1 control-label">Fecha Nacimiento</label>
+                            <label for="fechaCandidato" class="col-lg-1 control-label">Fecha Nacimiento</label>
                             <div class="col-lg-5">
-                                <input type="date" class="form-control" id="fechaUsuario" name="fechaUsuario" tabindex="3" required>
+                                <input type="date" class="form-control" id="fechaCandidato" name="fechaCandidato" tabindex="3" required value="<%=usMod.getFechaNacimiento()%>">
                             </div>
-                            <label for="generoUsuario" class="col-lg-1 control-label">Genero</label>
+                            <label for="generoCandidato" class="col-lg-1 control-label">Genero</label>
                             <div class="col-lg-5">
-                                <input type="radio" name="generoUsuario" id="generoUsuario" value="Masculino" tabindex="4" required> Masculino<br>
-                                <input type="radio" name="generoUsuario" id="generoUsuario" value="Femenino" tabindex="5" required> Femenino<br>
+                                <input type="radio" name="generoCandidato" id="generoCandidato" value="Masculino" <% if(usMod.getGenero().equals("Masculino")){ %> checked <% } %> tabindex="4" required> Masculino<br>
+                                <input type="radio" name="generoCandidato" id="generoCandidato" value="Femenino" <% if(usMod.getGenero().equals("Femenino")){ %> checked <% } %> tabindex="5" required> Femenino<br>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <label for="estadoUsuario" class="col-lg-1 control-label">Estado</label>
+                            <label for="eleccionCandidato" class="col-lg-1 control-label">Eleccion</label>
                             <div class="col-lg-5">
-                                <select class="form-control" id="estadoUsuario" name="estadoUsuario" tabindex="6" required>
-                                    <option value="1">Activo</option>
-                                    <option value="2">Inactivo</option>
+                                <select class="form-control" id="eleccionCandidato" name="eleccionCandidato" tabindex="6" required>
+                                    <%if (request.getAttribute("eleccionesVigentes") != null) {
+                                            List<Eleccion> lista = (ArrayList) request.getAttribute("eleccionesVigentes");
+                                            for (Eleccion el : lista) {%>
+                                    <option value="<%=el.getId()%>" <% if(usMod.getIdEleccion()==el.getId()){ %> selected <% } %>><%=el.getNombre()%></option>
+                                    <% }
+                                        }%>
                                 </select>   
                             </div>
-                            <label for="rolUsuario" class="col-lg-1 control-label">Rol</label>
+                            <label for="listaCandidato" class="col-lg-1 control-label">Numero Lista</label>
                             <div class="col-lg-5">
-                                <select class="form-control" id="rolUsuario" name="rolUsuario" tabindex="7" required="">
-                                    <option value="2">Usuario</option>
-                                    <option value="1">Administrador</option>
-                                </select>
+                                <input type="number" class="form-control" id="listaCandidato" name="listaCandidato" placeholder="Numero Lista" tabindex="7" required value="<%=usMod.getNumeroLista()%>">
                             </div>
                         </div>
                     </div> <br/>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="correoUsuario" class="col-lg-1 control-label">Correo Electronico</label>
-                            <div class="col-lg-5">
-                                <input type="email" class="form-control" id="correoUsuario" name="correoUsuario" placeholder="Correo Electronico" tabindex="8" required>
-                            </div>
-                            <label for="passUsuario" class="col-lg-1 control-label">Contraseña</label>
-                            <div class="col-lg-5">
-                                <input type="password" class="form-control" id="passUsuario" name="passUsuario" placeholder="Contraseña" tabindex="9" required>
-                            </div>
-                        </div>
-                    </div><br>
+                   <br>
                     <div class="contenedor-botones">
-                        <button class="btn btn-success" type="submit" name="enviar" value="Guardar" tabindex="9">Nuevo Usuario</button>
+                        <button class="btn btn-success" type="submit" name="enviar" value="Guardar" tabindex="9">Modificar Candidato</button>
                     </div>
                 </form>
+                <%}%>
             </div>
         </div>
     </div>

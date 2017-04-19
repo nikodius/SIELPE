@@ -155,7 +155,7 @@ public class UsuarioDAO implements ModeloDAO {
     public Usuario loginValidate(Connection conexion, String document, String pass) {
         Usuario userDTO = null;
         try {
-            String query = "SELECT nro_documento_user, nombre_user, fecha_nacimiento_user, id_rol, password_user, genero"
+            String query = "SELECT nro_documento_user, nombre_user, fecha_nacimiento_user, id_rol, password_user, genero, id_estado"
                     + " FROM usuario "
                     + "WHERE nro_documento_user=? AND password_user=md5(?)";
             statement = conexion.prepareStatement(query);
@@ -170,6 +170,7 @@ public class UsuarioDAO implements ModeloDAO {
                 userDTO.setIdRol(rs.getInt(4));
                 userDTO.setPassword(rs.getString(5));
                 userDTO.setGenero(rs.getString(6));
+                userDTO.setIdEstado(rs.getInt(7));
             }
         } catch (SQLException sqlexception) {
             return null;

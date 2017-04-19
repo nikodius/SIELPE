@@ -6,6 +6,7 @@
 package com.sielpe.model;
 
 import java.awt.Image;
+import java.util.Date;
 
 /**
  *
@@ -18,7 +19,19 @@ public class Candidato extends Persona {
     private int numeroLista;
     private int idEleccion;
     private String nombreEleccion;
+    private byte[] bytesFoto;
 
+    public Candidato() {
+    }
+
+    public Candidato(String id, String genero, Date fechaNacimiento, String nombre, int numeroLista, int idEleccion, byte[] bytesFoto) {
+        super(id, genero, fechaNacimiento);
+        this.nombre = nombre;
+        this.numeroLista = numeroLista;
+        this.idEleccion = idEleccion;
+        this.bytesFoto = bytesFoto;
+    }
+    
     public int getIdEleccion() {
         return idEleccion;
     }
@@ -59,5 +72,12 @@ public class Candidato extends Persona {
         this.nombreEleccion = nombreEleccion;
     }
 
-    
+    public byte[] getBytesFoto() {
+        return bytesFoto;
+    }
+
+    public void setBytesFoto(byte[] bytesFoto) {
+        this.bytesFoto = bytesFoto;
+    }
+
 }

@@ -85,17 +85,21 @@ public class Login extends HttpServlet {
      */
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException, NamingException {
         if (request.getParameter("enviar") != null) {
-            String respuesta;
+            String respuesta = "";
             Usuario user = facadeDAO.validateUser(request.getParameter("nombreUsuario"), request.getParameter("contraseniaUsuario"));
-            if (user != null) {
+            usuarioValido : if (user != null) {
+                if (user.getIdEstado() != 1) {
+                    respuesta = "Usuario invalido o inactivo";
+                    response.sendRedirect("Login?msg=" + respuesta);
+                    break usuarioValido;
+                }
                 HttpSession sesion = request.getSession(true);
                 sesion.setAttribute("user", user);
-                response.sendRedirect(user.getIdRol()==1?"Usuarios":"Elecciones");
+                response.sendRedirect(user.getIdRol() == 1 ? "Usuarios" : "Elecciones");
             } else {
                 respuesta = "Datos de usuario incorrectos";
                 response.sendRedirect("Login?msg=" + respuesta);
             }
-            //De lo contrario vamos a la página errorLogin.jsp
         } else {
             logout(request, response);
         }

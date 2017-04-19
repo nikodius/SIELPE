@@ -116,6 +116,20 @@ public class FachadaDAO {
     }
     
     /**
+     * metodo para listar elecciones del usuario logueado
+     * @return
+     * @throws MiExcepcion 
+     */
+    public List<Eleccion> eleccionesVigentes()  {
+        List<Object> dto = edao.listarVigentes(conexion);
+        List<Eleccion> elecciones = new ArrayList();
+        for (Object mDTO : dto) {
+            elecciones.add((Eleccion) mDTO);
+        }
+        return elecciones;
+    }
+    
+    /**
      * metodo para detalles eleccion
      * @param urdto
      * @return
@@ -158,6 +172,36 @@ public class FachadaDAO {
             candidatos.add((Candidato) mDTO);
         }
         return candidatos;
+    }
+    
+    /**
+     * metodo para crear candidato
+     * @return
+     */
+    public String crearCandidato(Candidato candidato) {
+        return cdao.crearRegistro(candidato, conexion);
+    }
+    
+    /**
+     * metodo para detalles candidato
+     * @param urdto
+     * @return
+     * @throws MiExcepcion 
+     */
+    public Candidato detallesCandidato(int id) {
+        Candidato candidato = (Candidato)cdao.listarUno(conexion, id);
+        return candidato;
+    }
+    
+     /**
+     * metodo editar candidato
+     * @param pr
+     * @param id
+     * @return
+     * @throws MiExcepcion 
+     */
+    public String editarCandidato(Candidato user){
+        return cdao.editarRegistro(conexion, user);
     }
     
     /**

@@ -17,8 +17,8 @@ public class FactoryDTO implements Factory {
     }
 
     @Override
-    public Candidato crearCandidato() {
-        return new Candidato();
+    public Candidato crearCandidato(String id, String genero, Date fechaNacimiento, String nombre, int numeroLista, int idEleccion, byte[] bytesFoto) {
+        return new Candidato(id, genero, fechaNacimiento, nombre, numeroLista, idEleccion, bytesFoto);
     }
 
     @Override
