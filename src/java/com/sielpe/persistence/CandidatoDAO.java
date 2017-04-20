@@ -7,11 +7,14 @@ package com.sielpe.persistence;
 
 import com.sielpe.model.Candidato;
 import com.sielpe.model.Usuario;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * clase modelo dao usuario
@@ -26,7 +29,7 @@ public class CandidatoDAO implements ModeloDAO {
         ArrayList<Object> listaCandidatos = new ArrayList();
         try {
             String query = "SELECT idcandidato, id_eleccion, nombre, genero, fecha_nacimiento, "
-                    + "numero_lista, nombre_eleccion "
+                    + "numero_lista, nombre_eleccion, imagen "
                     + "FROM candidato "
                     + "INNER JOIN eleccion ON(candidato.id_eleccion=eleccion.ideleccion)";
             statement = conexion.prepareStatement(query);
@@ -40,7 +43,8 @@ public class CandidatoDAO implements ModeloDAO {
                 candidato.setFechaNacimiento(rs.getDate(5));
                 candidato.setNumeroLista(rs.getInt(6));
                 candidato.setNombreEleccion(rs.getString(7));
-                //candidato.setImagen(rs.getImage(8));
+                Blob image = rs.getBlob(8);
+                candidato.setBytesFoto(image.getBytes(1,(int)image.length()));
                 listaCandidatos.add(candidato);
             }
         } catch (SQLException sqlexception) {
@@ -54,7 +58,7 @@ public class CandidatoDAO implements ModeloDAO {
         ArrayList<Object> listaCandidatos = new ArrayList();
         try {
             String query = "SELECT idcandidato, id_eleccion, nombre, genero, fecha_nacimiento, "
-                    + "numero_lista, nombre_eleccion "
+                    + "numero_lista, nombre_eleccion, imagen "
                     + "FROM candidato "
                     + "INNER JOIN eleccion ON(candidato.id_eleccion=eleccion.ideleccion)"
                     + "WHERE id_eleccion=?";
@@ -70,7 +74,8 @@ public class CandidatoDAO implements ModeloDAO {
                 candidato.setFechaNacimiento(rs.getDate(5));
                 candidato.setNumeroLista(rs.getInt(6));
                 candidato.setNombreEleccion(rs.getString(7));
-                //candidato.setImagen(rs.getImage(8));
+                Blob image = rs.getBlob(8);
+                candidato.setBytesFoto(image.getBytes(1,(int)image.length()));
                 listaCandidatos.add(candidato);
             }
         } catch (SQLException sqlexception) {
@@ -138,6 +143,33 @@ public class CandidatoDAO implements ModeloDAO {
         } catch (SQLException ex) {
             System.out.println("Error de MySQL: " + ex.getMessage());
             respuesta = "error, no se modifico";
+        }
+        return respuesta;
+    }
+    
+    public String guardarFoto(Connection conexion, byte[] foto, String id) {
+        int resultado = 0;
+        String respuesta = "";
+        String sql = "UPDATE candidato SET imagen=? "
+                + "WHERE idcandidato=?;";
+        try {
+            statement = conexion.prepareStatement(sql);
+            statement.setBytes(1, foto);
+            statement.setString(2, id);
+
+            resultado = statement.executeUpdate();
+            
+            //comprobar si se ejecuto la instruccion en sql
+            if (resultado != 0) {
+                respuesta = "Foto Almacenada";
+
+            } else {
+                respuesta = "NO se ha almacenado";
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Error de MySQL: " + ex.getMessage());
+            respuesta = "error, no se almaceno";
         }
         return respuesta;
     }

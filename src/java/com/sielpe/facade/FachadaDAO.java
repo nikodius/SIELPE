@@ -205,6 +205,17 @@ public class FachadaDAO {
     }
     
     /**
+     * metodo editar candidato
+     * @param pr
+     * @param id
+     * @return
+     * @throws MiExcepcion 
+     */
+    public String fotoCandidato(byte[] foto, String id){
+        return cdao.guardarFoto(conexion, foto, id);
+    }
+    
+    /**
      * metodo para listar candidatos elecciones
      * @return
      * @throws MiExcepcion 

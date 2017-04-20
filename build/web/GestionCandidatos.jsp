@@ -4,6 +4,7 @@
     Author     : NicolasRG
 --%>
 
+<%@page import="java.util.Base64"%>
 <%@page import="com.sielpe.model.Candidato"%>
 <%@page import="com.sielpe.model.Eleccion"%>
 <%@page import="com.sielpe.model.Usuario"%>
@@ -105,9 +106,9 @@
                             <td><%=pdto.getFechaNacimiento()%></td>
                             <td><%=pdto.getNumeroLista()%></td>
                             <td><%=pdto.getNombreEleccion()%></td>
-                            <td><%=pdto.getFoto()%></td>
+                            <td><img src="data:image/png;base64,<%=pdto.getBytesFoto()%>" alt="foto candidato"/></td>
                             <td><a href="GestionarCandidatos?id=<% out.print(pdto.getId());%>"><img src="images/edit.png" id="imgEX" alt="Modificar Registro"/></a></td>
-                            <td><a data-toggle="modal" href="#myModal"><img src="images/portrait.png" id="imgEX" alt="Modificar imagen"/ ></a></td>
+                            <td><a class="open-modal" data-toggle="modal" data-id="<% out.print(pdto.getId());%>" href="#myModal"><img src="images/portrait.png" id="imgEX" alt="Modificar imagen"/ ></a></td>
                         </tr>
                         <% }%>
                     </tbody>
@@ -125,7 +126,7 @@
                     <h4 class="modal-title">Cargar Foto</h4>
                 </div>
                 <div class="modal-body">
-                    <form name="frm" action="saveImage.jsp" enctype="multipart/form-data" method="post">
+                    <form name="frmImage" id="frmImage" action="" enctype="multipart/form-data" method="post">
                         <div class="row">
                             <div class="form-group">
                                 <label for="fotoCandidato" class="col-lg-1 control-label">Foto</label>
@@ -146,9 +147,12 @@
 
         </div>
     </div>
-
-
-
     <% }%>
     <br/><br/>
+    <script>
+        $(document).on("click", ".open-modal", function () {
+            var id = $(this).data('id');
+            $('#frmImage').attr('action', 'GestionarCandidatos?saveImage='+id);
+        });
+    </script>
     <jsp:include page="_footer.jsp" />

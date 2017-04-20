@@ -74,7 +74,7 @@
                         <tr>
                             <td><%=pdto.getNumeroLista()%></td>
                             <td><%=pdto.getNombre()%></td>
-                            <td></td>
+                            <td><img src="data:image/png;base64,<%=pdto.getBytesFoto()%>" alt="foto candidato"/></td>
                             <td><input type="checkbox" class="myinput large" value="<%=pdto.getId()%>" name="select" /></td>
                         </tr>
                         <% }%>
@@ -89,25 +89,42 @@
             <div class="btn-group" role="group">
                 <form  method="post" action="Votacion">
                     <input type="hidden" name="idCandidato" id="idCandidato" value="">
-                    <input type="hidden" name="idEleccion" id="idEleccion" value="<%=lista.get(0).getIdEleccion()%>" required>
-                    <input type="hidden" name="idUser" id="idUser" value="<%=usuario.getId()%>" required>
-                    <input type="hidden" name="estado" id="estado" value="1" required>
+                    <input type="hidden" name="idEleccion" id="idEleccion" value="<%=lista.get(0).getIdEleccion()%>" >
+                    <input type="hidden" name="idUser" id="idUser" value="<%=usuario.getId()%>" >
+                    <input type="hidden" name="estado" id="estado" value="1" >
                     <button type="submit" class="btn btn-success">Confirmar Voto</button>
                 </form> 
             </div>
             <div class="btn-group" role="group">
                 <form  method="post" action="Votacion">
-                    <input type="hidden" name="idEleccion" id="idEleccion" value="<%=lista.get(0).getIdEleccion()%>" required>
-                    <input type="hidden" name="idUser" id="idUser" value="<%=usuario.getId()%>" required>
-                    <input type="hidden" name="estado" id="estado" value="2" required>
+                    <input type="hidden" name="idEleccion" id="idEleccion" value="<%=lista.get(0).getIdEleccion()%>" >
+                    <input type="hidden" name="idUser" id="idUser" value="<%=usuario.getId()%>" >
+                    <input type="hidden" name="estado" id="estado" value="2" >
                     <button type="submit" class="btn btn-danger">Cancelar Voto</button>
                 </form> 
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                ...
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
 <%}
-        }%>
+    }%>
 <br/><br/>
 <jsp:include page="_footer.jsp" />
 <script>
