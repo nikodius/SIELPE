@@ -3,7 +3,7 @@
     Created on : 18/10/2016, 09:07:59 AM
     Author     : NicolasRG
 --%>
-
+<%@page import="com.sun.org.apache.xerces.internal.impl.dv.util.Base64;"%>
 <%@page import="com.sielpe.model.Candidato"%>
 <%@page import="com.sielpe.model.Eleccion"%>
 <%@page import="com.sielpe.model.Usuario"%>
@@ -58,12 +58,12 @@
             </div>
             <div class="panel-body">
                 <br/>
-                <table class = "table table-striped table-bordered table-hover table-condensed" id="tablerPR" >
+                <table class = "table table-striped table-bordered table-hover table-condensed col-xs-12 col-sm-8" id="tablerPR" >
                     <thead>
                         <tr>
                             <th>Numero Lista</th>
                             <th>Nombre</th>
-                            <th>Imagen</th>
+                            <th>Foto</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -74,7 +74,10 @@
                         <tr>
                             <td><%=pdto.getNumeroLista()%></td>
                             <td><%=pdto.getNombre()%></td>
-                            <td><img src="data:image/png;base64,<%=pdto.getBytesFoto()%>" alt="foto candidato"/></td>
+                            <td> <%if (pdto.getBytesFoto() != null) {%>
+                                <img src="data:image/png;base64,<%=Base64.encode(pdto.getBytesFoto())%>" width="120" alt="foto candidato"/>
+                                <% }%>
+                            </td>
                             <td><input type="checkbox" class="myinput large" value="<%=pdto.getId()%>" name="select" /></td>
                         </tr>
                         <% }%>
@@ -87,42 +90,79 @@
     <div class="row botones">
         <div class="btn-group btn-group-justified" style="padding-left: 20%; padding-right: 20%;" role="group" aria-label="...">
             <div class="btn-group" role="group">
-                <form  method="post" action="Votacion">
-                    <input type="hidden" name="idCandidato" id="idCandidato" value="">
-                    <input type="hidden" name="idEleccion" id="idEleccion" value="<%=lista.get(0).getIdEleccion()%>" >
-                    <input type="hidden" name="idUser" id="idUser" value="<%=usuario.getId()%>" >
-                    <input type="hidden" name="estado" id="estado" value="1" >
-                    <button type="submit" class="btn btn-success">Confirmar Voto</button>
-                </form> 
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalConfirm">Confirmar Voto</button>
             </div>
             <div class="btn-group" role="group">
-                <form  method="post" action="Votacion">
-                    <input type="hidden" name="idEleccion" id="idEleccion" value="<%=lista.get(0).getIdEleccion()%>" >
-                    <input type="hidden" name="idUser" id="idUser" value="<%=usuario.getId()%>" >
-                    <input type="hidden" name="estado" id="estado" value="2" >
-                    <button type="submit" class="btn btn-danger">Cancelar Voto</button>
-                </form> 
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalCancel">Cancelar Voto</button>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Modal confirmar voto-->
+<div class="modal fade" id="modalConfirm" role="dialog">
     <div class="modal-dialog">
+        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                ...
+                <button type="button" class="close" data-dismiss="modal"></button>
+                <h4 class="modal-title">Confirmar Voto</h4>
             </div>
             <div class="modal-body">
-                ...
+                <p>¿Está seguro de enviar su voto? No podra acceder de nuevo a esta elección, si no selecciono ningun candidato sera tomado como <b>voto en blanco</b>. 
+                </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <form  method="post" action="Votacion">
+                            <input type="hidden" name="idCandidato" id="idCandidato" value="">
+                            <input type="hidden" name="idEleccion" id="idEleccion" value="<%=lista.get(0).getIdEleccion()%>" >
+                            <input type="hidden" name="idUser" id="idUser" value="<%=usuario.getId()%>" >
+                            <input type="hidden" name="estado" id="estado" value="1" >
+                            <button type="submit" class="btn btn-primary">Confirmar Voto</button>
+                        </form> 
+                    </div>
+                    <div class="form-group">
+                        <button type="button" data-dismiss="modal" class="btn">Cancelar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal cancelar voto-->
+<div class="modal fade" id="modalCancel" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"></button>
+                <h4 class="modal-title">Cancelar Voto</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro de cancelar su voto? Su voto sera marcado como cancelado y no podra acceder de nuevo a esta elección. 
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <form  method="post" action="Votacion">
+                            <input type="hidden" name="idEleccion" id="idEleccion" value="<%=lista.get(0).getIdEleccion()%>" >
+                            <input type="hidden" name="idUser" id="idUser" value="<%=usuario.getId()%>" >
+                            <input type="hidden" name="estado" id="estado" value="2" >
+                            <button type="submit" class="btn btn-danger">Cancelar Voto</button>
+                        </form> 
+                    </div>
+                    <div class="form-group">
+                        <button type="button" data-dismiss="modal" class="btn">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>                             
 <%}
     }%>
 <br/><br/>

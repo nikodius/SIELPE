@@ -72,17 +72,17 @@
                 <h3 class="panel-title">Editar Eleccion</h3>
             </div>
             <div class="panel-body">
-                <form  method="post" action="GestionarElecciones?edit">
+                <form id="formu" method="post" action="GestionarElecciones?edit">
                     <input type="hidden" class="form-control" id="nombreEleccion" name="idEleccion" value="<%=usMod.getId()%>">
                     <div class="row">
                         <div class="form-group">
                             <label for="nombreEleccion" class="col-lg-1 control-label" >Nombre</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" id="nombreEleccion" name="nombreEleccion" placeholder="Nombre" tabindex="1" required value="<%=usMod.getNombre()%>">
+                                <input type="text" class="form-control" id="nombreEleccion" name="nombreEleccion" placeholder="Nombre" tabindex="1" maxlength="44" required value="<%=usMod.getNombre()%>">
                             </div>
                             <label for="descripcionEleccion" class="col-lg-1 control-label">Descripción</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" id="descripcionEleccion" name="descripcionEleccion" placeholder="Descripción" tabindex="2" required value="<%=usMod.getDescripcion()%>">
+                                <input type="text" class="form-control" id="descripcionEleccion" name="descripcionEleccion" placeholder="Descripción" tabindex="2" maxlength="240" required value="<%=usMod.getDescripcion()%>">
                             </div>
                         </div>
                     </div><br/>
@@ -127,5 +127,7 @@
         </div>
     </div>
 </div>
-
+<script>
+$("#formu").validate();
+</script>
 <jsp:include page="_footer.jsp" />

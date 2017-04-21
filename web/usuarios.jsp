@@ -78,7 +78,7 @@
                 %>
                 <div align="right"><a href="Usuarios?add"><img src="images/add.png" id="imgEX" alt="Agrega Registro"/> Nuevo Usuario</a></div>
                 <br/>
-                <table class = "table table-striped table-bordered table-hover table-condensed" id="tablerPR" >
+                <table class = "table table-striped table-bordered table-hover table-condensed col-xs-12 col-sm-8" id="tablerPR" >
                     <thead>
                         <tr>
                             <th>Id Usuario</th>

@@ -44,7 +44,7 @@ public class CandidatoDAO implements ModeloDAO {
                 candidato.setNumeroLista(rs.getInt(6));
                 candidato.setNombreEleccion(rs.getString(7));
                 Blob image = rs.getBlob(8);
-                candidato.setBytesFoto(image.getBytes(1,(int)image.length()));
+                candidato.setBytesFoto(image==null?null:image.getBytes(1,(int)image.length()));
                 listaCandidatos.add(candidato);
             }
         } catch (SQLException sqlexception) {
@@ -75,7 +75,7 @@ public class CandidatoDAO implements ModeloDAO {
                 candidato.setNumeroLista(rs.getInt(6));
                 candidato.setNombreEleccion(rs.getString(7));
                 Blob image = rs.getBlob(8);
-                candidato.setBytesFoto(image.getBytes(1,(int)image.length()));
+                candidato.setBytesFoto(image==null?null:image.getBytes(1,(int)image.length()));
                 listaCandidatos.add(candidato);
             }
         } catch (SQLException sqlexception) {

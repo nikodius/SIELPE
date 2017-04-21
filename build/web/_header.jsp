@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="css/estilos.css">
         <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
         <script src="js/jquery-3.1.1.js"></script>
+        <script src="js/jquery.validate_es.js"></script>
         <script src="js/bootstrap.js"></script>
         <title>SIELPE</title>
     </head>
@@ -50,8 +51,8 @@
                                     <div class="col-xs-12 col-sm-2">
                                         <div id="datos" align="center" class="">
 
-                                            <span>Bienvenido: <% out.print(usuario.getUserName());%></span><br>
-                                            <span><% out.print(usuario.getId());%></span>
+                                            <span>Bienvenido <% out.print(usuario.getUserName());%></span><br>
+                                            <span><b><% out.print(usuario.getIdRol()==1?"Administrador":"Elector");%></b></span>
 
                                             <form name="logout" action="Login" id="form1">
                                                 <input id="salir" type="submit" name="logout" class="btn btn-danger" value="Cerrar Sesión"/>

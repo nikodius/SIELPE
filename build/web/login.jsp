@@ -8,6 +8,8 @@
         <link href="css/estilosIndex.css" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+        <script src="js/jquery-3.1.1.js"></script>
+        <script src="js/jquery.validate_es.js"></script>
         <script src="js/bootstrap.js"></script>
         <!--jsp:include page="_header.jsp" /-->
         <script>
@@ -39,19 +41,19 @@
                         <% if (request.getParameter("msg") != null) { %>
                         <div id="mensaje" align="center" class="alert alert-warning"><%out.print(request.getParameter("msg"));%></div>
                         <% }%>
-                        <form class="form-horizontal login-form" name="formularioInicio" method="post" action="Login?send">
+                        <form id="login" class="form-horizontal login-form" name="formularioInicio" method="post" action="Login?send">
                             <div class="form-group control-group">
                                 <label for="nombreUsuario"></label>
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-user"></span>
-                                    <input class="form-control" name="nombreUsuario" id="nombreUsuario" type="text"  placeholder= "Documento Identidad" tabindex="1" required maxlength="35"  title="Digite su usuario" autocomplete="off" autofocus="">    
+                                    <input class="form-control" name="nombreUsuario" id="nombreUsuario" type="text"  placeholder= "Documento Identidad" tabindex="1" required maxlength="44" title="Digite su usuario" autocomplete="off" autofocus="">    
                                 </div>
                             </div>
                             <div class="form-group control-group">
                                 <label for="contraseniaUsuario"></label>
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-lock"></span>
-                                    <input class="form-control" name="contraseniaUsuario" id="contraseniaUsuario" type="password"  placeholder= "Contraseña" tabindex="2" required maxlength="45"  title="Digite su contraseña" autocomplete="off">
+                                    <input class="form-control" name="contraseniaUsuario" id="contraseniaUsuario" type="password"  placeholder= "Contraseña" tabindex="2" required maxlength="90" title="Digite su contraseña" autocomplete="off">
                                 </div>
                             </div>
                             <div>
@@ -72,6 +74,9 @@
                 </div>
             </div>         
         </div>
-        <script type="text/javascript" src="js/jquery.js"></script> <!--lo cree JM PRIMERO-->
+        <script type="text/javascript" src="js/jquery.js"></script> 
+        <script>
+        $("#login").validate();
+        </script>
     </body>
 </html>

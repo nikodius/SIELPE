@@ -74,16 +74,16 @@
                 <h3 class="panel-title">Registro Candidato</h3>
             </div>
             <div class="panel-body">
-                <form  method="post" action="GestionarCandidatos?new">
+                <form id="formu" method="post" action="GestionarCandidatos?new">
                     <div class="row">
                         <div class="form-group">
                             <label for="idCandidato" class="col-lg-1 control-label" >Numero Identificación</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" id="idCandidato" name="idCandidato" placeholder="Numero Identificación" tabindex="1" required>
+                                <input type="text" class="form-control" id="idCandidato" name="idCandidato" placeholder="Numero Identificación" tabindex="1" maxlength="44" required>
                             </div>
                             <label for="nombreCandidato" class="col-lg-1 control-label">Nombre Completo</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" id="nombreCandidato" name="nombreCandidato" placeholder="Nombre Completo" tabindex="2" required>
+                                <input type="text" class="form-control" id="nombreCandidato" name="nombreCandidato" placeholder="Nombre Completo" tabindex="2" maxlength="150"  required>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                         <div class="form-group">
                             <label for="eleccionCandidato" class="col-lg-1 control-label">Eleccion</label>
                             <div class="col-lg-5">
-                                <select class="form-control" id="eleccionCandidato" name="eleccionCandidato" tabindex="6" required>
+                                <select class="form-control" id="eleccionCandidato" name="eleccionCandidato" tabindex="6" required style="height:33px;">
                                     <%if (request.getAttribute("eleccionesVigentes") != null) {
                                             List<Eleccion> lista = (ArrayList) request.getAttribute("eleccionesVigentes");
                                             for (Eleccion el : lista) {%>
@@ -128,4 +128,7 @@
         </div>
     </div>
 </div>
+<script>
+$("#formu").validate();
+</script>
 <jsp:include page="_footer.jsp" />

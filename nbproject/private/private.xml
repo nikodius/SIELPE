@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/web/editarUsuario.jsp</file>
+            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/web/nuevoUsuario.jsp</file>
             <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/web/GestionCandidatos.jsp</file>
-            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/controller/GestionarCandidatos.java</file>
-            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/facade/FachadaDAO.java</file>
-            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/model/Candidato.java</file>
-            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/src/java/com/sielpe/persistence/CandidatoDAO.java</file>
-            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/web/editarCandidato.jsp</file>
-            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/web/nuevoCandidato.jsp</file>
+            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/web/login.jsp</file>
+            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/web/_header.jsp</file>
+            <file>file:/C:/Users/UserQV/Documents/NetBeansProjects/SIELPE/web/candidatos.jsp</file>
         </group>
     </open-files>
 </project-private>

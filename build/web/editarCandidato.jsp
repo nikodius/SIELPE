@@ -108,7 +108,7 @@
                         <div class="form-group">
                             <label for="eleccionCandidato" class="col-lg-1 control-label">Eleccion</label>
                             <div class="col-lg-5">
-                                <select class="form-control" id="eleccionCandidato" name="eleccionCandidato" tabindex="6" required>
+                                <select class="form-control" id="eleccionCandidato" name="eleccionCandidato" tabindex="6" required style="height:33px;">
                                     <%if (request.getAttribute("eleccionesVigentes") != null) {
                                             List<Eleccion> lista = (ArrayList) request.getAttribute("eleccionesVigentes");
                                             for (Eleccion el : lista) {%>

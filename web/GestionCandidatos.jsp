@@ -4,7 +4,7 @@
     Author     : NicolasRG
 --%>
 
-<%@page import="java.util.Base64"%>
+<%@page import="com.sun.org.apache.xerces.internal.impl.dv.util.Base64;"%>
 <%@page import="com.sielpe.model.Candidato"%>
 <%@page import="com.sielpe.model.Eleccion"%>
 <%@page import="com.sielpe.model.Usuario"%>
@@ -81,7 +81,7 @@
             <div class="panel-body">
                 <div align="right"><a href="GestionarCandidatos?add"><img src="images/add.png" id="imgEX" alt="Agrega Registro"/> Registrar Candidato</a></div>
                 <br/>
-                <table class = "table table-striped table-bordered table-hover table-condensed" id="tablerPR" >
+                <table class = "table table-striped table-bordered table-hover table-condensed col-xs-12 col-sm-8" id="tablerPR" >
                     <thead>
                         <tr>
                             <th>Documento Candidato</th>
@@ -90,7 +90,7 @@
                             <th>Fecha Nacimiento</th>
                             <th>Numero Lista</th>
                             <th>Eleccion</th>
-                            <th>Imagen</th>
+                            <th>Foto</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -106,7 +106,10 @@
                             <td><%=pdto.getFechaNacimiento()%></td>
                             <td><%=pdto.getNumeroLista()%></td>
                             <td><%=pdto.getNombreEleccion()%></td>
-                            <td><img src="data:image/png;base64,<%=pdto.getBytesFoto()%>" alt="foto candidato"/></td>
+                            <td> <%if(pdto.getBytesFoto()!=null){%>
+                                <img src="data:image/png;base64,<%=Base64.encode(pdto.getBytesFoto())%>" width="120" alt="foto candidato"/>
+                                <% } %>
+                            </td>
                             <td><a href="GestionarCandidatos?id=<% out.print(pdto.getId());%>"><img src="images/edit.png" id="imgEX" alt="Modificar Registro"/></a></td>
                             <td><a class="open-modal" data-toggle="modal" data-id="<% out.print(pdto.getId());%>" href="#myModal"><img src="images/portrait.png" id="imgEX" alt="Modificar imagen"/ ></a></td>
                         </tr>

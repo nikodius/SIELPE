@@ -74,16 +74,16 @@
                 <h3 class="panel-title">Nueva Eleccion</h3>
             </div>
             <div class="panel-body">
-                <form  method="post" action="GestionarElecciones?new">
+                <form id="formu" method="post" action="GestionarElecciones?new">
                     <div class="row">
                         <div class="form-group">
                             <label for="nombreEleccion" class="col-lg-1 control-label" >Nombre</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" id="nombreEleccion" name="nombreEleccion" placeholder="Nombre" tabindex="1" required>
+                                <input type="text" class="form-control" id="nombreEleccion" name="nombreEleccion" placeholder="Nombre" tabindex="1" maxlength="44" required>
                             </div>
                             <label for="descripcionEleccion" class="col-lg-1 control-label">Descripción</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" id="descripcionEleccion" name="descripcionEleccion" placeholder="Descripción" tabindex="2" required>
+                                <input type="text" class="form-control" id="descripcionEleccion" name="descripcionEleccion" placeholder="Descripción" tabindex="2" maxlength="240" required>
                             </div>
                         </div>
                     </div><br/>
@@ -127,5 +127,7 @@
         </div>
     </div>
 </div>
-
+<script>
+$("#formu").validate();
+</script>
 <jsp:include page="_footer.jsp" />
