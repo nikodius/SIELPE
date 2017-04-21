@@ -76,7 +76,7 @@
                 <%if (request.getAttribute("listElecciones") != null) {
                         List<Eleccion> lista = (ArrayList) request.getAttribute("listElecciones");
                 %>
-                <div align="right"><a href="GestionarElecciones?add"><img src="images/add.png" id="imgEX" alt="Agrega Registro"/> Nueva Eleccion</a></div>
+                <div align="right"><a href="GestionarElecciones?add"><img src="images/add.png" id="imgEX" alt="Agrega Registro"/> Nueva Elección</a></div>
                 <br/>
                 <table class = "table table-striped table-bordered table-hover table-condensed" id="tablerPR" >
                     <thead>
@@ -85,9 +85,9 @@
                             <th>Descripcion</th>
                             <th>Inicio Inscripcion Candidatos</th>
                             <th>Fin Inscripcion Candidatos</th>
-                            <th>Fecha Votacion</th>
-                            <th>Hora Inicio Votacion</th>
-                            <th>Hora Fin Votacion</th>
+                            <th>Fecha Votación</th>
+                            <th>Hora Inicio Votación</th>
+                            <th>Hora Fin Votación</th>
                             <th></th>
                         </tr>
                     </thead>

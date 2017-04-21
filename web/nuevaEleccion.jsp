@@ -64,14 +64,14 @@
     <div class="row">
         <ol class="breadcrumb pull-left">
             <li><a href="GestionarElecciones">Elecciones</a></li>
-            <li class="active"><a href="#">Nueva Eleccion</a></li>
+            <li class="active"><a href="#">Nueva Elección</a></li>
         </ol>
     </div>
     <!-- contenido principal-->
     <div class="row">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Nueva Eleccion</h3>
+                <h3 class="panel-title">Nueva Elección</h3>
             </div>
             <div class="panel-body">
                 <form id="formu" method="post" action="GestionarElecciones?new">
@@ -101,7 +101,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <label for="fechaVotacion" class="col-lg-1 control-label">Fecha Votacion</label>
+                            <label for="fechaVotacion" class="col-lg-1 control-label">Fecha Votación</label>
                             <div class="col-lg-5">
                                 <input type="date" class="form-control" id="fechaVotacion" name="fechaVotacion" tabindex="5" required>
                             </div>
@@ -109,11 +109,11 @@
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <label for="horaInicio" class="col-lg-1 control-label">Hora Inicio Votacion</label>
+                            <label for="horaInicio" class="col-lg-1 control-label">Hora Inicio Votación</label>
                             <div class="col-lg-5">
                                 <input type="time" class="form-control" id="horaInicio" name="horaInicio" tabindex="6" required>
                             </div>
-                            <label for="horaFin" class="col-lg-1 control-label">Hora Fin Votacion</label>
+                            <label for="horaFin" class="col-lg-1 control-label">Hora Fin Votación</label>
                             <div class="col-lg-5">
                                 <input type="time" class="form-control" id="horaFin" name="horaFin" tabindex="7" required>
                             </div>

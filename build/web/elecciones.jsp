@@ -58,8 +58,8 @@
                 <table class = "table table-striped table-bordered table-hover table-condensed" id="tablerPR" >
                     <thead>
                         <tr>
-                            <th>Nombre Eleccion</th>
-                            <th>Descripcion</th>
+                            <th>Nombre Elección</th>
+                            <th>Descripción</th>
                             <th>Hora Inicio</th>
                             <th>Hora Fin</th>
                             <th></th>
