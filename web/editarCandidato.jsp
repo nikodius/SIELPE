@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 18/10/2016, 09:07:59 AM
-    Author     : NicolasRG
---%>
-
 <%@page import="com.sielpe.model.Candidato"%>
 <%@page import="com.sielpe.model.Eleccion"%>
 <%@page import="com.sielpe.model.Usuario"%>

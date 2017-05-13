@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 18/10/2016, 09:07:59 AM
-    Author     : NicolasRG
---%>
-
 <%@page import="com.sun.org.apache.xerces.internal.impl.dv.util.Base64;"%>
 <%@page import="com.sielpe.model.Candidato"%>
 <%@page import="com.sielpe.model.Eleccion"%>

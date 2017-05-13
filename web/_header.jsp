@@ -1,9 +1,3 @@
-<%-- 
-    Document   : _header
-    Created on : 24/10/2016, 03:48:01 PM
-    Author     : UserQV
---%>
-
 <%@page import="com.sielpe.model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

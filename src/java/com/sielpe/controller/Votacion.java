@@ -44,7 +44,7 @@ public class Votacion extends HttpServlet {
             conexion = Conexion.getInstance();
             facadeDAO = new FachadaDAO();
             dtoFactory = new FactoryDTO();
-            String idCandidato = request.getParameter("idEleccion").equals("")?"0":request.getParameter("idEleccion");
+            String idCandidato = request.getParameter("idCandidato").equals("")?"1":request.getParameter("idCandidato");
             respuesta = facadeDAO.insertarVoto(dtoFactory.crearVoto(Integer.parseInt(request.getParameter("idEleccion")), request.getParameter("idUser"), idCandidato, request.getParameter("estado")));
             response.sendRedirect("Elecciones?msg=" + respuesta);
         } catch (Exception ex) {
